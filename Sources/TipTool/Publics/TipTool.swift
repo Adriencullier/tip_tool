@@ -11,10 +11,13 @@ public final class TipTool: ObservableObject {
     /// - Parameters:
     ///   - eventIds: ids used to register each event at app launch
     ///   - tips: all the tips information used to create tips
-    public init(eventIds: [String], tips: [any TipProtocol]) {
+    public init(eventIds: [String],
+                tips: [any TipProtocol],
+                shouldResetDataStore: Bool = false) {
         do {
-            try Tips.resetDatastore()
-            // Tips congiguration
+            if shouldResetDataStore {
+                try Tips.resetDatastore()
+            }
             try Tips.configure()
         } catch {
             print(error.localizedDescription)
@@ -41,6 +44,10 @@ public final class TipTool: ObservableObject {
             fatalError("This case shouldn't happen")
         }
         return tip
+    }
+    
+    func invalidateTip(_ featureId: String) {
+        self.getTip(featureId).invalidate(reason: .actionPerformed)
     }
     
     // MARK: - Private functions
