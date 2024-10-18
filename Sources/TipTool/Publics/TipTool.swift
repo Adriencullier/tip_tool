@@ -4,7 +4,7 @@ import TipKit
 public final class TipTool: ObservableObject {
     // MARK: - Properties
     /// Store all the Tips of the app
-    private let tips: [FeatureTip]
+    private var tips: [FeatureTip] = []
     
     // MARK: - Init
     /// TipManager init
@@ -22,8 +22,8 @@ public final class TipTool: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
-        self.tips = tips.map({ FeatureTip(tip: $0) })
         self.registerEvents(eventIds)
+        self.tips = tips.map({ FeatureTip(tip: $0) })
     }
     
     // MARK: - Public static functions
