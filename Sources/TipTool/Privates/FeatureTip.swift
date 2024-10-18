@@ -3,8 +3,6 @@ import TipKit
 /// Aims to define a Tip intializable with a FeatureTipProtocol
 struct FeatureTip: Tip {
     // MARK: - Properties
-    /// Feature id related to the feature tip
-    let featureId: String
     /// Title of the tip
     let title: Text
     /// Message of the tip
@@ -13,10 +11,11 @@ struct FeatureTip: Tip {
     let image: Image?
     /// Rules of the tip
     let rules: [Rule]
+    let id: String
     
     // MARK: - Init
     init(tip: any TipProtocol) {
-        self.featureId = tip.rawValue
+        self.id = tip.rawValue
         self.title = .init(tip.title)
         if let message = tip.message {
             self.message = .init(message)

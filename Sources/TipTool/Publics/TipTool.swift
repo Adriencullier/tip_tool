@@ -40,7 +40,7 @@ public final class TipTool: ObservableObject {
     /// - Parameter featureId: id of the feature tip
     /// - Returns: FeatureTip
     func getTip(_ featureId: String) -> FeatureTip {
-        guard let tip = self.tips.first(where: { $0.featureId == featureId }) else {
+        guard let tip = self.tips.first(where: { $0.id == featureId }) else {
             fatalError("This case shouldn't happen")
         }
         return tip
