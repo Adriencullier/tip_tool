@@ -1,4 +1,4 @@
-import SwiftUICore
+import SwiftUI
 
 /// Aims to list all the possible tip view modes
 public enum TipViewMode {

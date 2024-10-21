@@ -1,4 +1,4 @@
-import SwiftUICore
+import SwiftUI
 
 /// Aims define a tip
 public protocol TipProtocol: RawRepresentable where Self.RawValue == String {
